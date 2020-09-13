@@ -850,7 +850,7 @@
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-//#define USE_PROBE_FOR_Z_HOMING
+// #define USE_PROBE_FOR_Z_HOMING
 
 /**
  * Z_MIN_PROBE_PIN
@@ -868,7 +868,7 @@
  *      - normally-open switches to 5V and D32.
  *
  */
-//#define Z_MIN_PROBE_PIN E0_DIAG_PIN // Pin E0DET link to ExtruderBoard
+//#define Z_MIN_PROBE_PIN 32 // Pin E0_DIAG_PIN link to ExtruderBoard
 
 /**
  * Probe Type
@@ -993,7 +993,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -1, 40, -0.18 }
+#define NOZZLE_TO_PROBE_OFFSET { -2, 39, -0.18 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1168,7 +1168,7 @@
 #if EITHER(MIN_SOFTWARE_ENDSTOPS, MAX_SOFTWARE_ENDSTOPS)
   //#define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
 #endif
-
+ 
 /**
  * Filament Runout Sensors
  * Mechanical or opto endstops are used to check for the presence of filament.
@@ -1395,8 +1395,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 6  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 3  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 2  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 40  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/m)
