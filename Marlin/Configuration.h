@@ -694,7 +694,7 @@
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
 #define E0_DRIVER_TYPE TMC2209
-#define E1_DRIVER_TYPE TMC2209
+//#define E1_DRIVER_TYPE TMC2209
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988
@@ -1645,7 +1645,8 @@
  *
  * View the current statistics with M78.
  */
-//#define PRINTCOUNTER
+
+#define PRINTCOUNTER
 
 /**
  * Password
