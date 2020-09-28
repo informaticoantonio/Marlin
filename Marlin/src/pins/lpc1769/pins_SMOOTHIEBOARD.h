@@ -25,7 +25,7 @@
  * Smoothieboard pin assignments
  */
 
-#ifndef MCU_LPC1769
+#if NOT_TARGET(MCU_LPC1769)
   #error "Oops! Make sure you have the LPC1769 environment selected in your IDE."
 #endif
 
@@ -109,7 +109,7 @@
   #define STAT_LED_RED_PIN                 P1_19
   #define STAT_LED_BLUE_PIN                P1_20
 
-#elif HAS_SPI_LCD
+#elif HAS_WIRED_LCD
 
   /*
     The Smoothieboard supports the REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER with either

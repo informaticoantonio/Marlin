@@ -25,9 +25,9 @@
  * MKS SBASE pin assignments
  */
 
-#if defined(MKS_HAS_LPC1769) && !defined(MCU_LPC1769)
+#if defined(MKS_HAS_LPC1769) && NOT_TARGET(MCU_LPC1769)
   #error "Oops! Make sure you have the LPC1769 environment selected in your IDE."
-#elif !defined(MKS_HAS_LPC1769) && !defined(MCU_LPC1768)
+#elif NOT_TARGET(MKS_HAS_LPC1769, MCU_LPC1768)
   #error "Oops! Make sure you have the LPC1768 environment selected in your IDE."
 #endif
 
@@ -217,7 +217,7 @@
  * that the garbage/lines are erased immediately after the SD card accesses are completed.
  */
 
-#if HAS_SPI_LCD
+#if HAS_WIRED_LCD
   #define BEEPER_PIN                       P1_31  // EXP1.1
   #define BTN_ENC                          P1_30  // EXP1.2
   #define BTN_EN1                          P3_26  // EXP2.5

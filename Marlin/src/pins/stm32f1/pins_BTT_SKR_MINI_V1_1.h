@@ -21,7 +21,7 @@
  */
 #pragma once
 
-#ifndef TARGET_STM32F1
+#if NOT_TARGET(TARGET_STM32F1)
   #error "Oops! Select an STM32F1 board in 'Tools > Board.'"
 #endif
 
@@ -110,7 +110,7 @@
  *                EXP2                                              EXP1
  */
 
-#if HAS_SPI_LCD
+#if HAS_WIRED_LCD
   #define BEEPER_PIN                        PC10
   #define BTN_ENC                           PC11
 
@@ -172,7 +172,7 @@
 
     #endif // !FYSETC_MINI_12864
 
-    #if HAS_GRAPHICAL_LCD
+    #if HAS_MARLINUI_U8GLIB
       #ifndef BOARD_ST7920_DELAY_1
         #define BOARD_ST7920_DELAY_1 DELAY_NS(125)
       #endif
@@ -186,7 +186,7 @@
 
   #endif
 
-#endif // HAS_SPI_LCD
+#endif // HAS_WIRED_LCD
 
 //
 // SD Card
@@ -213,5 +213,5 @@
   #define MOSI_PIN                          PA7
   #define SS_PIN                            PA4
 #endif
-#define ON_BOARD_SPI_DEVICE                    1  // SPI1
+#define ONBOARD_SPI_DEVICE                     1  // SPI1
 #define ONBOARD_SD_CS_PIN                   PA4   // Chip select for "System" SD card

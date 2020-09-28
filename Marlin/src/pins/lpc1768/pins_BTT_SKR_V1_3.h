@@ -151,7 +151,7 @@
    * Hardware serial communication ports.
    * If undefined software serial is used according to the pins below
    */
-  //#define X_HARDWARE_SERIAL  Serial
+  //#define X_HARDWARE_SERIAL  Serial1
   //#define X2_HARDWARE_SERIAL Serial1
   //#define Y_HARDWARE_SERIAL  Serial1
   //#define Y2_HARDWARE_SERIAL Serial1
@@ -214,7 +214,7 @@
 #define EXPA2_09_PIN                       P0_15
 #define EXPA2_10_PIN                       P0_17
 
-#if HAS_SPI_LCD
+#if HAS_WIRED_LCD
 
   #if ENABLED(ANET_FULL_GRAPHICS_LCD)
 
@@ -350,7 +350,7 @@
 
   #endif // !CR10_STOCKDISPLAY
 
-#endif // HAS_SPI_LCD
+#endif // HAS_WIRED_LCD
 
 //
 // SD Support
