@@ -27,7 +27,7 @@
 
 #include "../../inc/MarlinConfigPre.h"
 
-#if HAS_GRAPHICAL_LCD && DISABLED(LIGHTWEIGHT_UI)
+#if HAS_MARLINUI_U8GLIB && DISABLED(LIGHTWEIGHT_UI)
 
 #include "dogm_Statusscreen.h"
 #include "ultralcd_DOGM.h"
@@ -254,7 +254,7 @@ FORCE_INLINE void _draw_centered_temp(const int16_t temp, const uint8_t tx, cons
 
     if (PAGE_UNDER(7)) {
       #if HEATER_IDLE_HANDLER
-        const bool dodraw = (blink || !thermalManager.hotend_idle[heater_id].timed_out);
+        const bool dodraw = (blink || !thermalManager.heater_idle[heater_id].timed_out);
       #else
         constexpr bool dodraw = true;
       #endif
@@ -327,7 +327,7 @@ FORCE_INLINE void _draw_centered_temp(const int16_t temp, const uint8_t tx, cons
 
     if (PAGE_UNDER(7)) {
       #if HEATER_IDLE_HANDLER
-        const bool dodraw = (blink || !thermalManager.bed_idle.timed_out);
+        const bool dodraw = (blink || !thermalManager.heater_idle[thermalManager.IDLE_INDEX_BED].timed_out);
       #else
         constexpr bool dodraw = true;
       #endif
@@ -758,7 +758,7 @@ void MarlinUI::draw_status_screen() {
 
         // Two-component mix / gradient instead of XY
 
-        char mixer_messages[12];
+        char mixer_messages[15];
         PGM_P mix_label;
         #if ENABLED(GRADIENT_MIX)
           if (mixer.gradient.enabled) {
@@ -913,4 +913,4 @@ void MarlinUI::draw_status_message(const bool blink) {
   #endif
 }
 
-#endif // HAS_GRAPHICAL_LCD && !LIGHTWEIGHT_UI
+#endif // HAS_MARLINUI_U8GLIB && !LIGHTWEIGHT_UI
