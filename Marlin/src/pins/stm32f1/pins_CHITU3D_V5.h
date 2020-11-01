@@ -94,7 +94,7 @@
 //
 #define CONTROLLER_FAN_PIN                  PD6   // BOARD FAN
 #define FAN_PIN                             PG13  // FAN
-#define FAN_PIN_2                           PG14
+#define FAN2_PIN                            PG14
 
 //
 // Misc
@@ -185,7 +185,7 @@
 
 // SPI1(PA7)=LCD & SPI3(PB5)=STUFF, are not available
 // Needs to use SPI2
-#define ENABLE_SPI2
+#define SPI_DEVICE                             2
 #define SCK_PIN                             PB13
 #define MISO_PIN                            PB14
 #define MOSI_PIN                            PB15

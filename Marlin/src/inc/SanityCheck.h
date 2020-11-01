@@ -3007,8 +3007,8 @@ static_assert(   _ARR_TEST(3,0) && _ARR_TEST(3,1) && _ARR_TEST(3,2)
 #if HAS_CUTTER
   #ifndef CUTTER_POWER_UNIT
     #error "CUTTER_POWER_UNIT is required with a spindle or laser. Please update your Configuration_adv.h."
-  #elif !CUTTER_UNIT_IS(PWM255) && !CUTTER_UNIT_IS(PERCENT) && !CUTTER_UNIT_IS(RPM)
-    #error "CUTTER_POWER_UNIT must be PWM255, PERCENT, or RPM. Please update your Configuration_adv.h."
+  #elif !CUTTER_UNIT_IS(PWM255) && !CUTTER_UNIT_IS(PERCENT) && !CUTTER_UNIT_IS(RPM) && !CUTTER_UNIT_IS(SERVO)
+    #error "CUTTER_POWER_UNIT must be PWM255, PERCENT, RPM, or SERVO. Please update your Configuration_adv.h."
   #endif
 
   #if ENABLED(LASER_POWER_INLINE)
@@ -3047,8 +3047,8 @@ static_assert(   _ARR_TEST(3,0) && _ARR_TEST(3,1) && _ARR_TEST(3,2)
   #define _PIN_CONFLICT(P) (PIN_EXISTS(P) && P##_PIN == SPINDLE_LASER_PWM_PIN)
   #if BOTH(SPINDLE_FEATURE, LASER_FEATURE)
     #error "Enable only one of SPINDLE_FEATURE or LASER_FEATURE."
-  #elif !PIN_EXISTS(SPINDLE_LASER_ENA)
-    #error "(SPINDLE|LASER)_FEATURE requires SPINDLE_LASER_ENA_PIN."
+  #elif !PIN_EXISTS(SPINDLE_LASER_ENA) && DISABLED(SPINDLE_SERVO)
+    #error "(SPINDLE|LASER)_FEATURE requires SPINDLE_LASER_ENA_PIN or SPINDLE_SERVO to control the power."
   #elif ENABLED(SPINDLE_CHANGE_DIR) && !PIN_EXISTS(SPINDLE_DIR)
     #error "SPINDLE_DIR_PIN is required for SPINDLE_CHANGE_DIR."
   #elif ENABLED(SPINDLE_LASER_PWM)
@@ -3178,6 +3178,60 @@ static_assert(   _ARR_TEST(3,0) && _ARR_TEST(3,1) && _ARR_TEST(3,2)
     #warning "PASSWORD_FEATURE settings will be lost on power-off without EEPROM_SETTINGS."
   #endif
 #endif
+
+/**
+ * Sanity check for valid stepper driver types
+ */
+#define _BAD_DRIVER(A) (defined(A##_DRIVER_TYPE) && !_DRIVER_ID(A##_DRIVER_TYPE))
+#if _BAD_DRIVER(X)
+  #error "X_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(Y)
+  #error "Y_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(Z)
+  #error "Z_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(X2)
+  #error "X2_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(Y2)
+  #error "Y2_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(Z2)
+  #error "Z2_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(Z3)
+  #error "Z3_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(Z4)
+  #error "Z4_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(E0)
+  #error "E0_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(E1)
+  #error "E1_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(E2)
+  #error "E2_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(E3)
+  #error "E3_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(E4)
+  #error "E4_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(E5)
+  #error "E5_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(E6)
+  #error "E6_DRIVER_TYPE is not recognized."
+#endif
+#if _BAD_DRIVER(E7)
+  #error "E7_DRIVER_TYPE is not recognized."
+#endif
+#undef _BAD_DRIVER
 
 // Misc. Cleanup
 #undef _TEST_PWM
