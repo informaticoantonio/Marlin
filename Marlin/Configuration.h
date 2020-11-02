@@ -794,8 +794,8 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 7.0
-  #define DEFAULT_YJERK 7.0
+  #define DEFAULT_XJERK 8.0
+  #define DEFAULT_YJERK 8.0
   #define DEFAULT_ZJERK  0.3
 
   //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
@@ -990,11 +990,11 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -5, 28, -0.07 }
+#define NOZZLE_TO_PROBE_OFFSET { 63, -50, -0.1}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 15
+#define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_SPEED (133*60)
@@ -1392,8 +1392,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 5 // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 30  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 63 // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 5  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/m)
