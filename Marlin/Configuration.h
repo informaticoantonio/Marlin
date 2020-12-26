@@ -991,7 +991,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 63, -50, -2.48}
+#define NOZZLE_TO_PROBE_OFFSET { 63, -50, -2.40}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1492,7 +1492,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (80*60), (60*60), (10*60) }
+#define HOMING_FEEDRATE_MM_M { (80*60), (80*60), (10*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1745,7 +1745,7 @@
  *
  * Set a numerical password for the printer which can be requested:
  *
- *  - When the printer boots up
+ *  - When the printer boots up 
  *  - Upon opening the 'Print from Media' Menu
  *  - When SD printing is completed or aborted
  *
