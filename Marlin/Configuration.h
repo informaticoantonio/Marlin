@@ -488,13 +488,13 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
-    #define DEFAULT_Kp_LIST { 39.73, 20.0 }
-    #define DEFAULT_Ki_LIST { 5.50, 1.0 }
-    #define DEFAULT_Kd_LIST { 71.73, 112.0 }
+    #define DEFAULT_Kp_LIST { 30.54, 20.0 }
+    #define DEFAULT_Ki_LIST { 3.39, 1.0 }
+    #define DEFAULT_Kd_LIST { 68.87, 112.0 }
   #else
-    #define DEFAULT_Kp 39.73
-    #define DEFAULT_Ki 5.50
-    #define DEFAULT_Kd 71.73
+    #define DEFAULT_Kp 30.54
+    #define DEFAULT_Ki 3.39
+    #define DEFAULT_Kd 68.87
   #endif
 #endif // PIDTEMP
 
@@ -533,9 +533,9 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 44.00
-  #define DEFAULT_bedKi 7.29
-  #define DEFAULT_bedKd 177.07
+  #define DEFAULT_bedKp 40.12
+  #define DEFAULT_bedKi 7.76
+  #define DEFAULT_bedKd 138.30
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -736,14 +736,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.7, 80.4, 400, 397 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.15, 80.15, 394, 391.70 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 50, 50 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 50, 40 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -783,7 +783,7 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-#define CLASSIC_JERK
+//#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
   #define DEFAULT_XJERK 8.0
   #define DEFAULT_YJERK 8.0
@@ -986,7 +986,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 63, -50, -2.40}
+#define NOZZLE_TO_PROBE_OFFSET { 63, -50, -2.49}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
