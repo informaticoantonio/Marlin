@@ -420,7 +420,7 @@
 #define TEMP_SENSOR_5 0
 #define TEMP_SENSOR_6 0
 #define TEMP_SENSOR_7 0
-#define TEMP_SENSOR_BED 1
+#define TEMP_SENSOR_BED 30
 #define TEMP_SENSOR_PROBE 0
 #define TEMP_SENSOR_CHAMBER 0
 
@@ -467,7 +467,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 300
+#define HEATER_0_MAXTEMP 400
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -498,13 +498,13 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
-    #define DEFAULT_Kp_LIST { 30.54, 20.0 }
-    #define DEFAULT_Ki_LIST { 3.39, 1.0 }
-    #define DEFAULT_Kd_LIST { 68.87, 112.0 }
+    #define DEFAULT_Kp_LIST { 36.67, 20.0 }
+    #define DEFAULT_Ki_LIST { 3.72, 1.0 }
+    #define DEFAULT_Kd_LIST { 90.45, 112.0 }
   #else
-    #define DEFAULT_Kp 30.54
-    #define DEFAULT_Ki 3.39
-    #define DEFAULT_Kd 68.87
+    #define DEFAULT_Kp 36.67
+    #define DEFAULT_Ki 3.72
+    #define DEFAULT_Kd 90.45
   #endif
 #endif // PIDTEMP
 
@@ -544,7 +544,7 @@
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   #define DEFAULT_bedKp 40.12
-  #define DEFAULT_bedKi 7.76
+  #define DEFAULT_bedKi 7.77
   #define DEFAULT_bedKd 138.30
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
@@ -790,7 +790,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.15, 80.15, 394, 397.1 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.13, 80.13, 399, 408 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1040,7 +1040,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 63, -50, -1.52}
+#define NOZZLE_TO_PROBE_OFFSET { 6, 25, -2.75}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1563,8 +1563,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 63 // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 5  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 10 // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 33  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
@@ -1684,9 +1684,9 @@
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 250
-#define PREHEAT_2_TEMP_BED    100
+#define PREHEAT_2_LABEL       "PETG"
+#define PREHEAT_2_TEMP_HOTEND 230
+#define PREHEAT_2_TEMP_BED    75
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
