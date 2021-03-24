@@ -417,7 +417,7 @@
 #define TEMP_SENSOR_5 0
 #define TEMP_SENSOR_6 0
 #define TEMP_SENSOR_7 0
-#define TEMP_SENSOR_BED 11
+#define TEMP_SENSOR_BED 60
 #define TEMP_SENSOR_PROBE 0
 #define TEMP_SENSOR_CHAMBER 0
 #define TEMP_SENSOR_COOLER 0
@@ -505,13 +505,13 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
-    #define DEFAULT_Kp_LIST { 34.47, 20.0 }
-    #define DEFAULT_Ki_LIST { 2.88, 1.0 }
-    #define DEFAULT_Kd_LIST { 103.00, 112.0 }
+    #define DEFAULT_Kp_LIST { 37.14, 20.0 }
+    #define DEFAULT_Ki_LIST { 3.67, 1.0 }
+    #define DEFAULT_Kd_LIST { 94.00, 112.0 }
   #else
-    #define DEFAULT_Kp 34.47
-    #define DEFAULT_Ki 2.88
-    #define DEFAULT_Kd 103.00
+    #define DEFAULT_Kp 37.14
+    #define DEFAULT_Ki 3.67
+    #define DEFAULT_Kd 94.00
   #endif
 #endif // PIDTEMP
 
@@ -1048,7 +1048,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 6, 25, -1.05}
+#define NOZZLE_TO_PROBE_OFFSET { 6, 25, -1.6}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
