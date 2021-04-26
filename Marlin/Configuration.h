@@ -506,13 +506,13 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
-    #define DEFAULT_Kp_LIST { 16.18,  16.18 }
-    #define DEFAULT_Ki_LIST { 0.99,  0.99 }
-    #define DEFAULT_Kd_LIST { 66.06, 66.06 }
+    #define DEFAULT_Kp_LIST { 10.04,  10.04 }
+    #define DEFAULT_Ki_LIST {0.51,  0.51 }
+    #define DEFAULT_Kd_LIST { 49.73, 49.73 }
   #else
-    #define DEFAULT_Kp  16.18
-    #define DEFAULT_Ki   0.99
-    #define DEFAULT_Kd 66.06
+    #define DEFAULT_Kp 10.04
+    #define DEFAULT_Ki  0.51
+    #define DEFAULT_Kd 49.73
   #endif
 #endif // PIDTEMP
 
@@ -551,9 +551,9 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 38.34
-  #define DEFAULT_bedKi 5.94
-  #define DEFAULT_bedKd 164.88
+  #define DEFAULT_bedKp 6.88
+  #define DEFAULT_bedKi 0.40
+  #define DEFAULT_bedKd 79.65
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1049,7 +1049,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -35, -37, -0.42 }
+#define NOZZLE_TO_PROBE_OFFSET { 25, -35, -0.42 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1577,8 +1577,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 0 // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 4  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 25 // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 2  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
