@@ -1,0 +1,80 @@
+Recv: echo:; Linear Units:
+Recv: echo:  G21 ; (mm)
+Recv: echo:; Temperature Units:
+Recv: echo:  M149 C ; Units in Celsius
+Recv: echo:; Filament settings (Disabled):
+Recv: echo:  M200 S0 D1.7500
+Recv: echo:; Steps per unit:
+Recv: echo:  M92 X80.2000 Y80.2000 Z408.0000 E423.0000
+Recv: echo:; Max feedrates (units/s):
+Recv: echo:  M203 X200.0000 Y200.0000 Z12.0000 E120.0000
+Recv: echo:; Max Acceleration (units/s2):
+Recv: echo:  M201 X1000.0000 Y1000.0000 Z1000.0000 E5000.0000
+Recv: echo:; Acceleration (units/s2) (P<print-accel> R<retract-accel> T<travel-accel>):
+Recv: echo:  M204 P1000.0000 R1250.0000 T1000.0000
+Recv: echo:; Advanced (B<min_segment_time_us> S<min_feedrate> T<min_travel_feedrate> J<junc_dev>):
+Recv: echo:  M205 B20000.0000 S0.0000 T0.0000 J0.0130
+Recv: echo:; Home offset:
+Recv: echo:  M206 X0.0000 Y0.0000 Z0.0000
+Recv: echo:; Auto Bed Leveling:
+Recv: echo:  M420 S1 Z0.0000 ; Leveling ON
+Recv: echo:  G29 W I0 J0 Z-0.08892
+Recv: echo:  G29 W I1 J0 Z-0.20608
+Recv: echo:  G29 W I2 J0 Z-0.27961
+Recv: echo:  G29 W I3 J0 Z-0.33745
+Recv: echo:  G29 W I4 J0 Z-0.41735
+Recv: echo:  G29 W I0 J1 Z0.62775
+Recv: echo:  G29 W I1 J1 Z0.33461
+Recv: echo:  G29 W I2 J1 Z0.19980
+Recv: echo:  G29 W I3 J1 Z0.07873
+Recv: echo:  G29 W I4 J1 Z0.05471
+Recv: echo:  G29 W I0 J2 Z0.82529
+Recv: echo:  G29 W I1 J2 Z0.49245
+Recv: echo:  G29 W I2 J2 Z0.27088
+Recv: echo:  G29 W I3 J2 Z0.13020
+Recv: echo:  G29 W I4 J2 Z-0.04529
+Recv: echo:  G29 W I0 J3 Z0.66843
+Recv: echo:  G29 W I1 J3 Z0.34196
+Recv: echo:  G29 W I2 J3 Z0.16059
+Recv: echo:  G29 W I3 J3 Z0.02676
+Recv: echo:  G29 W I4 J3 Z-0.04627
+Recv: echo:  G29 W I0 J4 Z0.32088
+Recv: echo:  G29 W I1 J4 Z0.06843
+Recv: echo:  G29 W I2 J4 Z-0.20559
+Recv: echo:  G29 W I3 J4 Z-0.43990
+Recv: echo:  G29 W I4 J4 Z-0.45706
+Recv: echo:; Material heatup parameters:
+Recv: echo:  M145 S0 H200.0000 B60.0000 F0
+Recv: echo:  M145 S1 H230.0000 B75.0000 F0
+Recv: echo:  M145 S2 H240.0000 B110.0000 F0
+Recv: echo:; Hotend PID:
+Recv: echo:  M301 P21.0000 I2.3000 D53.0000
+Recv: echo:; Bed PID:
+Recv: echo:  M304 P46.2300 I9.0700 D157.0200
+Recv: echo:; Power-loss recovery:
+Recv: echo:  M413 S1 ; ON
+Recv: echo:; Retract (S<length> F<feedrate> Z<lift>):
+Recv: echo:  M207 S0.7500 W13.0000 F2700.0000 Z0.0010
+Recv: echo:; Recover (S<length> F<feedrate>):
+Recv: echo:  M208 S0.0000 W0.0000 F480.0000
+Recv: echo:; Auto-Retract (S<enable>):
+Recv: echo:  M209 S0
+Recv: echo:; Z-Probe Offset:
+Recv: echo:  M851 X-30.0000 Y10.0000 Z-0.6850 ; (mm)
+Recv: echo:; Stepper driver current:
+Recv: echo:  M906 X1100 Y1350 Z1350
+Recv: echo:  M906 I1 Z1350
+Recv: echo:  M906 T0 E680
+Recv: echo:; Driver stepping mode:
+Recv: echo:  M569 S1 X Y Z
+Recv: echo:  M569 S1 I1 Z
+Recv: echo:  M569 S1 T0 E
+Recv: echo:; Input Shaping:
+Recv: echo:  M593 X F60.0000 D0.1500
+Recv: echo:  M593 Y F60.0000 D0.1500
+Recv: echo:; Linear Advance:
+Recv: echo:  M900 K0.0000
+Recv: echo:; Filament load/unload:
+Recv: echo:  M603 L50.0000 U50.0000 ; (mm)
+Recv: echo:; Filament runout sensor:
+Recv: echo:  M412 S1 D50.0000 ; Sensor ON
