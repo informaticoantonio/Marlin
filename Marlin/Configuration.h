@@ -677,13 +677,13 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-    #define DEFAULT_Kp_LIST { 10.04, 20.0 }
-    #define DEFAULT_Ki_LIST { 0.51, 1.0 }
-    #define DEFAULT_Kd_LIST { 49.73, 112.0 }
+    #define DEFAULT_Kp_LIST { 13.77, 20.0 }
+    #define DEFAULT_Ki_LIST { 0.783, 1.0 }
+    #define DEFAULT_Kd_LIST { 60.07, 112.0 }
   #else
-    #define DEFAULT_Kp 10.04
-    #define DEFAULT_Ki 0.51
-    #define DEFAULT_Kd 49.73
+    #define DEFAULT_Kp 13.77
+    #define DEFAULT_Ki 0.783
+    #define DEFAULT_Kd 60.07
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
@@ -771,9 +771,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 6.88
-  #define DEFAULT_bedKi 0.40
-  #define DEFAULT_bedKd 79.65
+  #define DEFAULT_bedKp 35.20
+  #define DEFAULT_bedKi 5.32
+  #define DEFAULT_bedKd 155.27
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -1227,7 +1227,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.20, 80.20, 408, 423 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 81.00, 80.6, 406.0, 405 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1554,7 +1554,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 25, -35, -0.42 }
+#define NOZZLE_TO_PROBE_OFFSET { 25, -35, -0.833 }
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
