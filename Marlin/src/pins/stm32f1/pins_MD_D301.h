@@ -160,8 +160,8 @@
 //
 // SD Support
 //
-#ifndef SDCARD_CONNECTION
-  #define SDCARD_CONNECTION LCD
+#if !defined(SDCARD_CONNECTION) && DISABLED(NO_LCD_SDCARD)
+  #define SDCARD_CONNECTION                  LCD
 #endif
 
 #define SD_DETECT_PIN                       PE3
@@ -187,8 +187,8 @@
  * to let the bootloader init the screen.
  */
 
-#define DOGLCD_MOSI                         -1    // Prevent auto-define by Conditionals_post.h
-#define DOGLCD_SCK                          -1
+//#define DOGLCD_MOSI                       -1    // Prevent auto-define by Conditionals-5-post.h
+//#define DOGLCD_SCK                        -1
 
 //
 // TFT with FSMC interface

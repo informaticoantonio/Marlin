@@ -80,9 +80,28 @@ def load_boards():
     return ''
 
 #
-# Extract a schema from the current configuration files
+# Extract the specified configuration files in the form of a structured schema.
+# Contains the full schema for the configuration files, not just the enabled options,
+# Contains the current values of the options, not just data structure, so "schema" is a slight misnomer.
 #
-def extract():
+# The returned object is a nested dictionary with the following indexing:
+#
+#  - schema[filekey][section][define_name] = define_info
+#
+# Where the define_info contains the following keyed fields:
+#    - section  = The @section the define is in
+#    - name     = The name of the define
+#    - enabled  = True if the define is enabled (not commented out)
+#    - line     = The line number of the define
+#    - sid      = A serial ID for the define
+#    - value    = The value of the define, if it has one
+#    - type     = The type of the define, if it has one
+#    - requires = The conditions that must be met for the define to be enabled
+#    - comment  = The comment for the define, if it has one
+#    - units    = The units for the define, if it has one
+#    - options  = The options for the define, if it has any
+#
+def extract_files(filekey):
     # Load board names from boards.h
     boards = load_boards()
 
@@ -95,10 +114,8 @@ def extract():
         GET_SENSORS     = 4 # Gathering temperature sensor options
         ERROR           = 9 # Syntax error
 
-    # List of files to process, with shorthand
-    filekey = { 'Configuration.h':'basic', 'Configuration_adv.h':'advanced' }
     # A JSON object to store the data
-    sch_out = { 'basic':{}, 'advanced':{} }
+    sch_out = { key:{} for key in filekey.values() }
     # Regex for #define NAME [VALUE] [COMMENT] with sanitized line
     defgrep = re.compile(r'^(//)?\s*(#define)\s+([A-Za-z0-9_]+)\s*(.*?)\s*(//.+)?$')
     # Pattern to match a float value
@@ -161,6 +178,12 @@ def extract():
                             cfield = 'notes' if 'comment' in last_added_ref else 'comment'
                             last_added_ref[cfield] = cline
 
+                #
+                # Add the given comment line to the comment buffer, unless:
+                # - The line starts with ':' and JSON values to assign to 'opt'.
+                # - The line starts with '@section' so a new section needs to be returned.
+                # - The line starts with '======' so just skip it.
+                #
                 def use_comment(c, opt, sec, bufref):
                     if c.startswith(':'):               # If the comment starts with : then it has magic JSON
                         d = c[1:].strip()               # Strip the leading :
@@ -180,7 +203,7 @@ def extract():
                 # The comment will be applied to the next #define.
                 if state == Parse.SLASH_COMMENT:
                     if not defmatch and the_line.startswith('//'):
-                        use_comment(the_line[2:].strip(), options_json, section, comment_buff)
+                        options_json, section = use_comment(the_line[2:].strip(), options_json, section, comment_buff)
                         continue
                     else:
                         state = Parse.NORMAL
@@ -200,7 +223,7 @@ def extract():
 
                         state = Parse.NORMAL
 
-                    # Strip the leading '*' from block comments
+                    # Strip the leading '* ' from block comments
                     cline = re.sub(r'^\* ?', '', cline)
 
                     # Collect temperature sensors
@@ -392,6 +415,13 @@ def extract():
                             last_added_ref = define_info
 
     return sch_out
+
+#
+# Extract the current configuration files in the form of a structured schema.
+#
+def extract():
+    # List of files to process, with shorthand
+    return extract_files({ 'Configuration.h':'basic', 'Configuration_adv.h':'advanced' })
 
 def dump_json(schema:dict, jpath:Path):
     with jpath.open('w') as jfile:
